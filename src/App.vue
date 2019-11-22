@@ -113,4 +113,8 @@ $entities-colors: (
 .align-items-center {
   align-items: center;
 }
+
+#app {
+  background-color: white;
+}
 </style>

@@ -3,26 +3,20 @@
     <section class="section">
       <div class="container">
         <div class="columns space-top">
-          <div class="column">
-            <img
-              src="@/assets/imgs/computer-bot.png"
-              alt="avatar" >
-          </div>
           <form
             class="column is-desktop is-vcentered align-center"
-          >
-            <h1 class="title has-text-centered">Create account</h1>
-            <b-field label="Email">
+            @onSubmit="userHandle()">
+            <h1 class="title has-text-centered">Welcome</h1>
+            <h2 class="subtitle has-text-centered">
+              Bothub is an open platform for predicting, training and sharing NLP
+              datasets in multiple languages.
+            </h2>
+            <h2 class="subtitle has-text-centered">
+              Let's start by putting a name in your repository, choosing its language
+              and deciding if it will be open to the public or private.
+            </h2>
+            <b-field label="Bot name">
               <b-input v-model="user.email"/>
-            </b-field>
-            <b-field label="Name">
-              <b-input v-model="user.name"/>
-            </b-field>
-            <b-field label="Username">
-              <b-input v-model="user.username"/>
-            </b-field>
-            <b-field label="Password">
-              <b-input v-model="user.password"/>
             </b-field>
             <b-field
               label="Language">
@@ -35,13 +29,26 @@
                 <option value="Japanese">Japanese</option>
               </b-select>
             </b-field>
+            <div class="field">
+              <b-switch
+                :value="true"
+                type="is-success">
+                Private
+              </b-switch>
+            </div>
             <div class="has-text-centered">
               <b-button
                 type="is-primary"
                 @click="userHandle()"
-              >Create account</b-button>
+              >Next</b-button>
             </div>
           </form>
+          <div class="column divisor"/>
+          <div class="column">
+            <img
+              src="@/assets/imgs/undraw.svg"
+              alt="avatar" >
+          </div>
         </div>
       </div>
     </section>
@@ -52,7 +59,7 @@
 import Layout from '@/components/shared/Layout';
 
 export default {
-  name: 'Step1',
+  name: 'Step2',
   components: {
     Layout,
   },
@@ -88,5 +95,12 @@ img {
 
 .space-top {
   margin-top: 5rem;
+}
+
+.divisor {
+  background: #e0e0e0;
+  max-width: 1px;
+  padding: .5px;
+  margin: 0 2rem;
 }
 </style>

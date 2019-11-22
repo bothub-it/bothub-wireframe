@@ -15,91 +15,12 @@
           class="bh-grid__item layout__header__logo"
           to="/">
           <img
-            src="@/assets/imgs/logo-white.svg"
-            alt="Bothub"
-            class="hide-mobile">
-          <img
-            src="@/assets/imgs/icon-white.svg"
-            alt="Bothub"
-            class="hide-desktop">
+            src="~@/assets/imgs/logo.svg"
+            alt="bothub">
         </router-link>
-        <div
-          v-if="$slots.center"
-          class="bh-grid__item layout__header__center">
-          <slot name="center" />
-        </div>
-        <div class="bh-grid__item bh-grid__item--nested">
-          <div class="bh-grid bh-grid--row layout__header__options">
-            <div
-              v-if="authenticated"
-              class="bh-grid__item hide-mobile">
-              <bh-button
-                size="small"
-                primary
-                inverted
-                rounded
-                max-content
-                @click="openNewRepositoryModal()">new bot</bh-button>
-            </div>
-            <div
-              v-if="authenticated"
-              class="bh-grid__item layout__header__icon-tutorial--center">
-              <bh-icon-button
-                class="layout__header__icon-tutorial"
-                size="medium"
-                value="question"
-                @click="openBeginnerTutorialModal()"
-              />
-            </div>
-            <div
-              v-if="authenticated"
-              class="bh-grid__item">
-              <bh-dropdown position="left">
-                <user-avatar
-                  slot="trigger"
-                  :profile="myProfile" />
-                <bh-dropdown-item @click="openMyProfile()">
-                  {{ myProfile.name || '...' }}
-                </bh-dropdown-item>
-                <bh-dropdown-item
-                  @click="openNewRepositoryModal()">
-                  Start your bot
-                </bh-dropdown-item>
-                <bh-dropdown-item @click="logout()">
-                  Logout
-                </bh-dropdown-item>
-              </bh-dropdown>
-            </div>
-            <div
-              v-if="!authenticated"
-              class="bh-grid__item">
-              <bh-button
-                color="fake-white"
-                transparent
-                max-content
-                @click="openLoginModal()">sign in</bh-button>
-            </div>
-            <div
-              v-if="!authenticated"
-              class="bh-grid__item">
-              <bh-button
-                primary
-                inverted
-                max-content
-                class="hide-mobile"
-                @click="signUp()">sign up</bh-button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class="layout__content"><slot /></div>
-    <site-footer />
-    <new-repository-modal
-      :active="newRepositoryModalOpen"
-      @requestClose="closeNewRepositoryModal()" />
-    <beginner-tutorial
-      :open.sync="beginnerTutorialModalOpen"/>
   </div>
 </template>
 
@@ -218,7 +139,7 @@ export default {
     z-index: 100;
     width: 100%;
     height: $loading-height;
-    background-color: $primary;
+    background-color: white;;
     background-color: rgba($primary, .25);
     overflow: hidden;
 
@@ -236,7 +157,8 @@ export default {
 
   &__header {
     padding: $loading-height 1rem;
-    background-color: $color-primary;
+    background-color: white;
+    border-bottom: 1px solid #CFD5D9;
 
     &__logo {
       min-width: ($size-normal * .75);
@@ -271,7 +193,7 @@ export default {
   }
 
   &__content {
-    min-height: calc(100vh - 3.75rem);
+    // min-height: calc(100vh - 3.75rem);
   }
 }
 </style>

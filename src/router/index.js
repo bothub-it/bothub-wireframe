@@ -12,12 +12,15 @@ import Router from 'vue-router';
 // import RepositorySettings from '@/views/repository/Settings';
 // import RepositoryAnalyzeText from '@/views/repository/AnalyzeText';
 // import RepositoryEvaluate from '@/views/repository/Evaluate';
-// import NotFound from '@/views/NotFound';
+import NotFound from '@/views/NotFound';
 // import SafariAlert from '@/views/SafariAlert';
-import store from '../store';
+// import store from '../store';
 
 // wireframe import
 import step1 from '@/views/wireframe/step1';
+import step2 from '@/views/wireframe/step2';
+import step3 from '@/views/wireframe/step3';
+import step4 from '@/views/wireframe/step4';
 
 Vue.use(Router);
 
@@ -28,6 +31,21 @@ export default new Router({
       path: '',
       name: 'step1',
       component: step1,
+    },
+    {
+      path: '/create-repository',
+      name: 'step2',
+      component: step2,
+    },
+    {
+      path: '/choose-category',
+      name: 'step3',
+      component: step3,
+    },
+    {
+      path: '/repository',
+      name: 'step4',
+      component: step4,
     },
     // {
     //   path: '/signup',
@@ -100,11 +118,11 @@ export default new Router({
     //   name: 'repository-test',
     //   component: RepositoryEvaluate,
     // },
-    // {
-    //   path: '*',
-    //   name: '404',
-    //   component: NotFound,
-    // },
+    {
+      path: '*',
+      name: '404',
+      component: NotFound,
+    },
     // {
     //   path: '/safariAlert/',
     //   name: 'safari-alert',
