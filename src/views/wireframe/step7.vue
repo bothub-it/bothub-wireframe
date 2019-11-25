@@ -13,9 +13,13 @@
                 code-class="plaintext">{{
                   repository.nlp_server }}parse/</bh-highlighted-pre>
           </div>
+          <v-tour
+            :steps="steps"
+            name="copyAuthorization" />
           <div class="repository-analyze-text__item">
             <p><strong>Header:</strong></p>
               <bh-highlighted-pre
+              id="uuid"
                 code-class="plaintext">Authorization: Bearer {{
                   repository.authorization.uuid }}</bh-highlighted-pre>
           </div>
@@ -92,7 +96,26 @@ export default {
     UpdatesList,
   },
   extends: RepositoryBase,
+  data() {
+    return {
+      myOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonStop: 'Finalizar',
+        },
+      },
+      steps: [
+        {
+          target: '#uuid', // We're using document.querySelector() under the hood
+          content: "First let's go to the training screen!",
+        },
+      ],
+    };
+  },
   computed: {},
+  mounted() {
+    this.$tours.copyAuthorization.start();
+  },
 };
 </script>
 

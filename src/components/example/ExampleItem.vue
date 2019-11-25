@@ -1,7 +1,6 @@
 <template>
   <div class="example">
     <example-accordion
-      :id="id"
       :text="text"
       :entities="entities"
       :intent="intent"
@@ -21,10 +20,6 @@ export default {
     ExampleAccordion,
   },
   props: {
-    id: {
-      type: Number,
-      required: true,
-    },
     text: {
       type: String,
       default: '...',

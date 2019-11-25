@@ -9,56 +9,66 @@
                 <a
                   :class="{ 'is-active': currentPage == 1}"
                   @click="currentPage = 1">
-                  <b-icon
+                  <!-- <b-icon
                     icon=""
-                /> Summary</a>
+                />  -->
+                  Summary</a>
               </li>
               <li>
                 <a
-                  id="v-step-0"
+                  id="summary"
                   :class="{ 'is-active': currentPage == 2}"
                   @click="currentPage = 2">
-                  <b-icon
+                  <!-- <b-icon
                     icon="home"
-                /> Train</a>
+                /> -->
+                  Train</a>
               </li>
               <li>
                 <a>
-                  <b-icon
+                  <!-- <b-icon
                     icon="home"
-                /> Translate</a>
+                  />  -->
+                  Translate
+                </a>
               </li>
               <li>
                 <a>
-                  <b-icon
+                  <!-- <b-icon
                     icon="home"
-                /> Test</a>
+                />  -->
+                  Test</a>
               </li>
               <li>
                 <a>
-                  <b-icon
+                  <!-- <b-icon
                     icon="home"
-                /> Inbox</a>
+                />  -->
+                  Inbox</a>
               </li>
               <li>
                 <a
+                  id="integration"
                   :class="{ 'is-active': currentPage == 3}"
                   @click="currentPage = 3">
-                  <b-icon
+                  <!-- <b-icon
                     icon="home"
-                /> Integrations</a>
+                /> -->
+                  Integrations</a>
               </li>
               <li>
                 <a>
-                  <b-icon
+                  <!-- <b-icon
                     icon="home"
-                /> Users</a>
+                />  -->
+                  Users</a>
               </li>
               <li>
                 <a>
-                  <b-icon
+                  <!-- <b-icon
                     icon="home"
-                /> Settings</a>
+                />  -->
+                  Settings</a>
               </li>
             </ul>
           </aside>
@@ -67,10 +77,16 @@
           :callbacks="myCallbacks"
           :steps="steps"
           name="menuTour" />
+        <v-tour
+          :callbacks="myCallbacks2"
+          :steps="steps3"
+          name="integrationButton" />
         <div class="column">
-          <step-5 v-show="currentPage == 1" />
-          <step-6 v-show="currentPage == 2"/>
-          <step-7 v-show="currentPage == 3"/>
+          <step-5 v-if="currentPage == 1" />
+          <step-6
+            v-if="currentPage == 2"
+            @integrationTour="goIntegration()"/>
+          <step-7 v-if="currentPage == 3"/>
         </div>
         <b-modal
           :active.sync="isComponentModalActive"
@@ -130,12 +146,21 @@ export default {
       },
       steps: [
         {
-          target: '#v-step-0', // We're using document.querySelector() under the hood
+          target: '#summary', // We're using document.querySelector() under the hood
           content: "First let's go to the training screen!",
         },
       ],
+      steps3: [
+        {
+          target: '#integration', // We're using document.querySelector() under the hood
+          content: 'Now click here',
+        },
+      ],
       myCallbacks: {
-        onStop: this.teste,
+        onStop: this.changePage,
+      },
+      myCallbacks2: {
+        onStop: this.changeToIntegration,
       },
     };
   },
@@ -144,8 +169,14 @@ export default {
       this.isComponentModalActive = false;
       this.$tours.menuTour.start();
     },
-    teste() {
+    goIntegration() {
+      this.$tours.integrationButton.start();
+    },
+    changePage() {
       this.currentPage = 2;
+    },
+    changeToIntegration() {
+      this.currentPage = 3;
     },
   },
 };

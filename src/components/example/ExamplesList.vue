@@ -1,7 +1,11 @@
 <template>
   <div>
     <div v-if="true">
-      <example-item />
+      <example-item
+        v-for="item in items"
+        :text="item.text"
+        :intent="item.intent"
+        :key="item.text"/>
     </div>
     <p
       v-else
@@ -25,6 +29,10 @@ export default {
     query: {
       type: Object,
       default: () => ({}),
+    },
+    items: {
+      type: Array,
+      default: () => ([]),
     },
   },
   data() {

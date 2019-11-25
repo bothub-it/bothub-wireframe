@@ -11,7 +11,7 @@
               <span>Add examples to improve your bot intelligence.</span>
               <new-example-form
                 :repository="repository"
-                @created="onExampleCreated()" />
+                @created="onExampleCreated($event)" />
             </div>
           </div>
         </div>
@@ -21,23 +21,42 @@
     <div class="bh-grid__item">
       <div class="trainings-repository__list-wrapper">
         <h2>Sentences list</h2>
-        <bh-button
-          v-if="repository.examples__count > 0 && repository.authorization.can_write "
-          ref="training"
-          color="secondary-light"
-          size="normal"
-          @click="openTrainingModal">
-          Run training
-        </bh-button>
+        <div id="training">
+          <bh-button
+            v-if="repository.examples__count > 0 && repository.authorization.can_write "
+            ref="training"
+            color="secondary-light"
+            size="normal"
+            @click="openTrainingModal">
+            Run training
+          </bh-button>
+        </div>
+
       </div>
       <filter-examples
         :intents="repository.intents_list"
         :entities="repository.entities_list"
         @queryStringFormated="onSearch($event)"/>
       <examples-list
+        :items="examples"
         :query="query"
         @exampleDeleted="onExampleDeleted" />
     </div>
+    <v-tour
+      :steps="steps2"
+      name="analyze" />
+    <analyze-text-drawer
+      id="analyze-1"
+      :repository-uuid="repository.uuid"
+      :default-language="repository.language"
+      :available-languages="repository.available_languages"
+      @integration="callIntegration()" />
+    <v-tour
+      :steps="steps"
+      name="training" />
+    <v-tour
+      :steps="steps"
+      name="in" />
   </div>
 </template>
 
@@ -55,6 +74,8 @@ import TrainModal from '@/components/repository/TrainModal';
 import TrainResponse from '@/components/repository/TrainResponse';
 import { exampleSearchToDicty, exampleSearchToString } from '@/utils/index';
 
+import AnalyzeTextDrawer from '@/components/repository/AnalyzeTextDrawer';
+
 
 export default {
   name: 'Step6',
@@ -68,6 +89,7 @@ export default {
     RequestAuthorizationModal,
     TrainModal,
     TrainResponse,
+    AnalyzeTextDrawer,
   },
   extends: RepositoryBase,
   data() {
@@ -79,6 +101,28 @@ export default {
       querySchema: {},
       query: {},
       training: false,
+      examples: [],
+      myOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonSkip: 'Skip tour',
+          buttonPrevious: 'Previous',
+          buttonNext: 'Proximo',
+          buttonStop: 'Finalizar',
+        },
+      },
+      steps: [
+        {
+          target: '#training', // We're using document.querySelector() under the hood
+          content: 'Now run your train!',
+        },
+      ],
+      steps2: [
+        {
+          target: '#analyze-1', // We're using document.querySelector() under the hood
+          content: 'Now Test your dataset',
+        },
+      ],
     };
   },
   computed: {
@@ -91,6 +135,9 @@ export default {
       'openLoginModal',
       'trainRepository',
     ]),
+    callIntegration() {
+      this.$emit('integrationTour');
+    },
     onSearch(value) {
       Object.assign(this.querySchema, value);
 
@@ -107,15 +154,7 @@ export default {
       this.query = exampleSearchToDicty(formattedQueryString);
     },
     openTrainingModal() {
-      if (!this.authenticated) {
-        this.openLoginModal();
-      }
-      if (this.authenticated && this.repository.available_request_authorization) {
-        this.openRequestAuthorizationModal();
-      }
-      if (this.authenticated && this.repository.authorization.can_write) {
-        this.trainModalOpen = true;
-      }
+      this.$tours.analyze.start();
     },
     openRequestAuthorizationModal() {
       this.requestAuthorizationModalOpen = true;
@@ -128,8 +167,11 @@ export default {
       });
       this.updateRepository(false);
     },
-    onExampleCreated() {
-      this.updateRepository(true);
+    onExampleCreated(event) {
+      this.examples.push(event);
+      if (this.examples.length >= 4) {
+        this.$tours.training.start();
+      }
     },
     onExampleDeleted() {
       this.repository.examples__count -= 1;

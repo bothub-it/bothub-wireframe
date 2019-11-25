@@ -29,6 +29,7 @@
               :errors="errors ? errors.text : []"
               label="Text">
               <bh-textarea
+                id="analyze-text-1"
                 :rows="8"
                 v-model="data.text"
                 class="drawer-content__text-area"
@@ -36,6 +37,7 @@
             </bh-field>
             <div class="field has-text-right">
               <bh-button
+                id="analyze-text-2"
                 :disabled="submitting"
                 type="submit"
                 primary>Analyze</bh-button>
@@ -88,6 +90,10 @@
         </bh-tabs>
       </div>
     </transition>
+    <v-tour
+      :options="myOptions"
+      :steps="steps"
+      name="analyzeText" />
   </div>
 </template>
 
@@ -123,6 +129,28 @@ export default {
       activeTab: 0,
       errors: null,
       open: false,
+      myOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonSkip: 'Skip tour',
+          buttonPrevious: 'Previous',
+          buttonNext: 'Proximo',
+          buttonStop: 'Finalizar',
+        },
+      },
+      steps: [
+        {
+          target: '#analyze-text-1', // We're using document.querySelector() under the hood
+          content: 'Select your language and put your text',
+        },
+        {
+          target: '#analyze-text-2', // We're using document.querySelector() under the hood
+          content: 'Now run your train!',
+        },
+      ],
+      myCallbacks: {
+        onStop: this.changePage,
+      },
     };
   },
   computed: {
@@ -136,38 +164,38 @@ export default {
     ]),
     openCollapse() {
       this.open = !this.open;
+      this.$tours.analyzeText.start();
     },
     async onSubmit() {
-      this.submitting = true;
-      this.result = null;
-      this.errors = null;
-      try {
-        const response = await this.analyzeText({
-          repositoryUUID: this.repositoryUuid,
-          language: this.data.language || this.availableLanguages[0],
-          text: this.data.text,
-        });
-        this.result = response.data;
-        this.submitting = false;
-        return true;
-      } catch (error) {
-        const { response } = error;
-        const { status, data } = response;
-
-        if (!response || status === 500) {
-          this.$bhToastNotification({
-            message:
-              (data && data.detail)
-              || 'Something unexpected happened! We couldn’t analyze your text.',
-            type: 'danger',
-            time: 5000,
-          });
-        } else if (data) {
-          this.errors = data;
-        }
-      }
-      this.submitting = false;
-      return false;
+      this.result = {
+        intent: {
+          name: 'affirmative',
+          confidence: 0.9956279993057251,
+        },
+        intent_ranking: [
+          {
+            name: 'affirmative',
+            confidence: 0.9956279993057251,
+          },
+          {
+            name: 'negative',
+            confidence: 0,
+          },
+          {
+            name: 'doubt',
+            confidence: 0,
+          },
+        ],
+        labels_list: [],
+        entities_list: [],
+        entities: {},
+        text: 'ok',
+        update_id: 16238,
+        language: 'en',
+      };
+      setTimeout(() => {
+        this.$emit('integration');
+      }, 3000);
     },
     clipBoardTest() {
       const text = JSON.stringify(this.result, null, 2);

@@ -7,10 +7,6 @@ export default {
     description: 'Welcome for your first repository!',
     is_private: false,
     available_languages: [
-      'pt_br',
-      'nl',
-      'ha',
-      'es',
       'en',
     ],
     entities: [],
@@ -64,10 +60,6 @@ export default {
     },
     examples__count: 364,
     evaluate_languages_count: {
-      pt_br: 121,
-      nl: 0,
-      ha: 0,
-      es: 0,
       en: 0,
     },
     absolute_url: 'https://bothub.it/johncordeiro/binary/',

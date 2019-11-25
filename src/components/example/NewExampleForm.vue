@@ -2,14 +2,14 @@
   <div>
     <form
       class="columns is-variable is-2"
-      @submit.prevent="onSubmit()"
+      @submit.prevent="onExampleCreated()"
     >
       <div class="column is-three-fifths">
         <bh-field
+          id="input-1"
           :errors="errors.text || errors.language"
         >
           <example-text-with-highlighted-entities-input
-            id="v-step-0"
             ref="textInput"
             v-model="text"
             :entities="entities"
@@ -31,7 +31,7 @@
         <bh-field
           :errors="errors.intent">
           <bh-autocomplete
-            id="v-step-1"
+            id="input-2"
             v-model="intent"
             :data="repository.intents_list || []"
             :formatters="intentFormatters"
@@ -42,6 +42,7 @@
       <div class="column is-narrow">
         <bh-field>
           <bh-button
+            id="input-3"
             :disabled="!isValid || submitting "
             :tooltip-hover="!isValid ? validationErrors : null"
             :loading="submitting"
@@ -57,9 +58,6 @@
     <div class="columns is-variable is-1">
       <div class="column is-three-fifths">
         <bh-field :errors="errors.entities">
-          <v-tour
-            :steps="steps"
-            name="myTour" />
           <entities-input
             ref="entitiesInput"
             v-model="entities"
@@ -73,6 +71,9 @@
         </bh-field>
       </div>
     </div>
+    <v-tour
+      :steps="steps"
+      name="myTour" />
   </div>
 </template>
 
@@ -119,12 +120,16 @@ export default {
       },
       steps: [
         {
-          target: '#v-step-0', // We're using document.querySelector() under the hood
-          content: 'Discover vue tour!',
+          target: '#input-1', // We're using document.querySelector() under the hood
+          content: 'Enter a sentence here that you would like your bot to understand. Ex: I really want this',
         },
         {
-          target: '#v-step-1', // We're using document.querySelector() under the hood
-          content: 'Discover <strong>Vue Tour</strong>!',
+          target: '#input-2', // We're using document.querySelector() under the hood
+          content: 'And here, identify that intent of the sentence you typed matches. Ex: affirmative',
+        },
+        {
+          target: '#input-3', // We're using document.querySelector() under the hood
+          content: 'And finally, submit your sentence',
         },
       ],
     };
@@ -209,39 +214,10 @@ export default {
         this.$refs.textInput.clearSelected();
       }
     },
-    async onSubmit() {
-      this.errors = {};
-      this.submitting = true;
-
-      try {
-        await this.newExample({
-          repository: this.repository.uuid,
-          ...this.data,
-        });
-
-        this.text = '';
-        this.intent = '';
-        this.entities = [];
-        this.submitting = false;
-
-        this.$emit('created');
-        return true;
-      } catch (error) {
-        /* istanbul ignore next */
-        const data = error.response && error.response.data;
-        /* istanbul ignore next */
-        if (data) {
-          /* istanbul ignore next */
-          this.$bhToastNotification({
-            message: data.non_field_errors[0],
-            type: 'danger',
-          });
-          this.errors = data;
-        }
-        /* istanbul ignore next */
-        this.submitting = false;
-      }
-      return false;
+    async onExampleCreated() {
+      this.$emit('created', this.data);
+      this.text = '';
+      this.intent = '';
     },
   },
 };

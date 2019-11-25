@@ -87,10 +87,6 @@ export default {
     EditExample,
   },
   props: {
-    id: {
-      type: Number,
-      required: true,
-    },
     text: {
       type: String,
       default: '',
