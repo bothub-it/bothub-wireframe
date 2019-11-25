@@ -60,4 +60,7 @@ export default {
   searchUser(store, query) {
     return user.search(query);
   },
+  setInfo({ commit }, payload) {
+    commit(TYPES.SET_INFO, payload);
+  },
 };

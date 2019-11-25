@@ -1,25 +1,21 @@
 <template>
   <div>
-    <pagination
-      v-if="examplesList"
-      :item-component="exampleItemElem"
-      :list="examplesList"
-      :repository="repository"
-      @itemDeleted="onItemDeleted($event)" />
+    <div v-if="true">
+      <example-item />
+    </div>
     <p
-      v-if="examplesList && examplesList.empty"
+      v-else
       class="no-examples">No examples.</p>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import Pagination from '@/components-v1/shared/Pagination';
 import ExampleItem from '@/components/example/ExampleItem';
 
 
 const components = {
-  Pagination,
+  ExampleItem,
 };
 
 export default {

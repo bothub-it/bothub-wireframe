@@ -12,7 +12,7 @@
       </div>
       <div class="repository-home__header__wrapper">
         <div class="repository-home__title">
-          {{ repository.name }}
+          {{ getRepository.name }}
         </div>
         <span
           v-for="language in repository.available_languages"
@@ -105,9 +105,11 @@ import Layout from '@/components/shared/Layout';
 import RepositoryBase from './base';
 import SideBarNavigation from '@/components/shared/SideBar';
 
+import { mapGetters } from 'vuex';
+
 
 export default {
-  name: 'RepositoryHome',
+  name: 'Step5',
   components: {
     RepositoryViewBase,
     BadgesCard,
@@ -135,6 +137,9 @@ export default {
     };
   },
   computed: {
+    ...mapGetters([
+      'getRepository',
+    ]),
     hasIntents() {
       return this.repository.intents_list.length > 0;
     },

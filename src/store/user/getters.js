@@ -11,4 +11,7 @@ export default {
     const profile = profiles[nickname] || {};
     return (profile.lastUpdate || 0);
   },
+  getUser(state) {
+    return state.user_info || {};
+  },
 };

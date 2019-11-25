@@ -11,7 +11,15 @@ export default {
     );
   },
   setRepository(state, value) {
-    state.selectedRepository = value;
+    console.log(value.categories);
+
+    const {
+      name, language, isPrivate, categories,
+    } = value;
+    state.selectedRepository.name = name || state.selectedRepository.name;
+    state.selectedRepository.is_private = isPrivate || state.selectedRepository.is_private;
+    state.selectedRepository.language = language || state.selectedRepository.language;
+    state.selectedRepository.categories_list = categories || state.selectedRepository.categories_list;
   },
   updateRepository(state, value) {
     state.updateRepository = value;

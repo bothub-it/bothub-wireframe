@@ -22,7 +22,9 @@
               <b-input v-model="user.username"/>
             </b-field>
             <b-field label="Password">
-              <b-input v-model="user.password"/>
+              <b-input
+                v-model="user.password"
+                type="password"/>
             </b-field>
             <b-field
               label="Language">
@@ -69,7 +71,8 @@ export default {
   },
   methods: {
     userHandle() {
-      console.log(this.user);
+      this.$store.dispatch('setInfo', this.user);
+      this.$router.push({ name: 'step2' });
     },
   },
 };

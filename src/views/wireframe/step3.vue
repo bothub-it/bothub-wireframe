@@ -23,7 +23,7 @@
                 @click="handleActivate(category)">
                 <h4>{{ category.name }}</h4>
                 <img
-                  :src="require(`@/assets/imgs/${category.img}.svg`)"
+                  :src="require(`@/assets/imgs/${category.icon}.svg`)"
                   class="category-wrapper"
                   alt="avatar">
               </div>
@@ -40,7 +40,7 @@
                 @click="handleActivate(category)">
                 <h4>{{ category.name }}</h4>
                 <img
-                  :src="require(`@/assets/imgs/${category.img}.svg`)"
+                  :src="require(`@/assets/imgs/${category.icon}.svg`)"
                   class="category-wrapper"
                   alt="avatar">
               </div>
@@ -48,7 +48,7 @@
             <div class="has-text-centered">
               <b-button
                 type="is-primary"
-                @click="userHandle()"
+                @click="categoryHandle()"
               >Next</b-button>
             </div>
           </form>
@@ -75,14 +75,26 @@ export default {
   data() {
     return {
       categories1: [
-        { name: 'Health', img: 'health', selected: false },
-        { name: 'Food', img: 'food', selected: false },
-        { name: 'Sport', img: 'sport', selected: false },
+        {
+          name: 'Health', icon: 'health', selected: false, id: 1,
+        },
+        {
+          name: 'Food', icon: 'food', selected: false, id: 2,
+        },
+        {
+          name: 'Sport', icon: 'sport', selected: false, id: 3,
+        },
       ],
       categories2: [
-        { name: 'Tecnology', img: 'tecno', selected: false },
-        { name: 'Entertainment', img: 'entertainment', selected: false },
-        { name: 'Business', img: 'business', selected: false },
+        {
+          name: 'Tecnology', icon: 'tecno', selected: false, id: 4,
+        },
+        {
+          name: 'Entertainment', icon: 'entertainment', selected: false, id: 5,
+        },
+        {
+          name: 'Business', icon: 'business', selected: false, id: 6,
+        },
       ],
       selectedCategories: [],
     };
@@ -98,6 +110,10 @@ export default {
     },
     handleRemove(value) {
       this.selectedCategories = this.selectedCategories.filter(e => e.name !== value.name);
+    },
+    categoryHandle() {
+      this.$store.dispatch('setRepository', { categories: this.selectedCategories });
+      this.$router.push({ name: 'step4' });
     },
   },
 };

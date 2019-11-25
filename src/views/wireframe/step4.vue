@@ -1,44 +1,70 @@
 <template>
   <layout>
     <div class="columns">
-      <div class="column is-2 ">
-        <aside class="menu">
-          <p class="menu-label">
-            General
-          </p>
+      <div class="column is-2 remove-space">
+        <aside class="menu menu-space">
           <ul class="menu-list">
-            <li><a>Dashboard</a></li>
-            <li><a>Customers</a></li>
-          </ul>
-          <p class="menu-label">
-            Administration
-          </p>
-          <ul class="menu-list">
-            <li><a>Team Settings</a></li>
             <li>
-              <a class="is-active">Manage Your Team</a>
-              <ul>
-                <li><a>Members</a></li>
-                <li><a>Plugins</a></li>
-                <li><a>Add a member</a></li>
-              </ul>
+              <a
+                :class="{ 'is-active': currentPage == 1}"
+                @click="currentPage = 1">
+                <b-icon
+                  icon=""
+              /> Summary</a>
             </li>
-            <li><a>Invitations</a></li>
-            <li><a>Cloud Storage Environment Settings</a></li>
-            <li><a>Authentication</a></li>
-          </ul>
-          <p class="menu-label">
-            Transactions
-          </p>
-          <ul class="menu-list">
-            <li><a>Payments</a></li>
-            <li><a>Transfers</a></li>
-            <li><a>Balance</a></li>
+            <li>
+              <a
+                :class="{ 'is-active': currentPage == 2}"
+                @click="currentPage = 2">
+                <b-icon
+                  icon="home"
+              /> Train</a>
+            </li>
+            <li>
+              <a>
+                <b-icon
+                  icon="home"
+              /> Translate</a>
+            </li>
+            <li>
+              <a>
+                <b-icon
+                  icon="home"
+              /> Test</a>
+            </li>
+            <li>
+              <a>
+                <b-icon
+                  icon="home"
+              /> Inbox</a>
+            </li>
+            <li>
+              <a
+                :class="{ 'is-active': currentPage == 3}"
+                @click="currentPage = 3">
+                <b-icon
+                  icon="home"
+              /> Integrations</a>
+            </li>
+            <li>
+              <a>
+                <b-icon
+                  icon="home"
+              /> Users</a>
+            </li>
+            <li>
+              <a>
+                <b-icon
+                  icon="home"
+              /> Settings</a>
+            </li>
           </ul>
         </aside>
       </div>
       <div class="column">
-        <step-5 />
+        <step-5 v-show="currentPage == 1" />
+        <step-6 v-show="currentPage == 2"/>
+        <step-7 v-show="currentPage == 3"/>
       </div>
       <b-modal
         :active.sync="isComponentModalActive"
@@ -56,7 +82,9 @@
             <p>can we start?</p>
           </div>
           <footer class="modal-card-foot">
-            <button class="button is-primary">Lets go</button>
+            <button
+              class="button is-primary"
+              @click="isComponentModalActive = false">Lets go</button>
           </footer>
         </div>
       </b-modal>
@@ -69,6 +97,8 @@ import Layout from '@/components/shared/Layout';
 import RepositoryBase from './base';
 import SideBarNavigation from '@/components/shared/SideBar';
 import step5 from './step5';
+import step6 from './step6';
+import step7 from './step7';
 
 
 export default {
@@ -77,11 +107,14 @@ export default {
     Layout,
     SideBarNavigation,
     step5,
+    step6,
+    step7,
   },
   extends: RepositoryBase,
   data() {
     return {
       isComponentModalActive: true,
+      currentPage: 1,
     };
   },
 };
@@ -95,6 +128,11 @@ export default {
   img {
     width: 200px;
   }
+}
+
+.remove-space {
+  padding-top: 0rem !important;
+  height: 92.5vh;
 }
 
 .modal-card-foot {

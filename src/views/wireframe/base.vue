@@ -114,6 +114,7 @@ export default {
         use_analyze_char: false,
         nlp_server: 'https://nlp.bothub.it/',
       },
+      user_info: {},
     };
   },
 };

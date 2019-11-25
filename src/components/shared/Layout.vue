@@ -9,7 +9,30 @@
       class="layout__loading">
       <div class="layout__loading__progress" />
     </div>
-    <div class="layout__header">
+    <div
+      v-if="getUser.email && getUser.name"
+      class="layout__header">
+      <div class="header-wrapper">
+        <router-link
+          class="layout__header__logo"
+          to="/">
+          <img
+            src="~@/assets/imgs/logo.svg"
+            alt="bothub">
+        </router-link>
+        <div class="avatar-info">
+          <div class="avatar-info__text">
+            <p>Welcome, <span>{{ getUser.username }}</span></p>
+          </div>
+          <user-avatar
+            :profile="getUser"
+            size="large" />
+        </div>
+      </div>
+    </div>
+    <div
+      v-else
+      class="layout__header">
       <div class="bh-grid bh-grid--space-between bh-grid--row">
         <router-link
           class="bh-grid__item layout__header__logo"
@@ -27,10 +50,12 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
+
 import NewRepositoryModal from '@/components-v1/shared/NewRepositoryModal';
 import SiteFooter from '@/components-v1/shared/SiteFooter';
 import UserAvatar from '@/components/user/UserAvatar';
 import BeginnerTutorial from '@/components/repository/BeginnerTutorial';
+
 
 const components = {
   NewRepositoryModal,
@@ -60,12 +85,14 @@ export default {
     return {
       newRepositoryModalOpen: false,
       beginnerTutorialModalOpen: false,
+      userProfile: this.$store.state.user_info,
     };
   },
   computed: {
     ...mapGetters([
       'authenticated',
       'myProfile',
+      'getUser',
     ]),
   },
   watch: {
@@ -159,6 +186,7 @@ export default {
     padding: $loading-height 1rem;
     background-color: white;
     border-bottom: 1px solid #CFD5D9;
+    margin-bottom: 12px;
 
     &__logo {
       min-width: ($size-normal * .75);
@@ -194,6 +222,26 @@ export default {
 
   &__content {
     // min-height: calc(100vh - 3.75rem);
+  }
+
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .avatar-info {
+    display: flex;
+    align-items: center;
+    margin: 0 1.5rem;
+
+    &__text {
+      margin: 0 1rem;
+
+      span {
+        color: $primary;
+      }
+    }
   }
 }
 </style>

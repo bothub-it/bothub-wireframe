@@ -16,12 +16,12 @@
               and deciding if it will be open to the public or private.
             </h2>
             <b-field label="Bot name">
-              <b-input v-model="user.email"/>
+              <b-input v-model="repositoryInfo.name"/>
             </b-field>
             <b-field
               label="Language">
               <b-select
-                v-model="user.language"
+                v-model="repositoryInfo.language"
                 placeholder="Select your language"
                 expanded>
                 <option value="English">English</option>
@@ -31,6 +31,7 @@
             </b-field>
             <div class="field">
               <b-switch
+                v-model="repositoryInfo.is_private"
                 :value="true"
                 type="is-success">
                 Private
@@ -39,7 +40,7 @@
             <div class="has-text-centered">
               <b-button
                 type="is-primary"
-                @click="userHandle()"
+                @click="repoHandle()"
               >Next</b-button>
             </div>
           </form>
@@ -65,18 +66,17 @@ export default {
   },
   data() {
     return {
-      user: {
-        email: '',
+      repositoryInfo: {
         name: '',
-        username: '',
-        password: '',
+        is_private: '',
         language: '',
       },
     };
   },
   methods: {
-    userHandle() {
-      console.log(this.user);
+    repoHandle() {
+      this.$store.dispatch('setRepository', this.repositoryInfo);
+      this.$router.push({ name: 'step3' });
     },
   },
 };
