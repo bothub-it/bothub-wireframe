@@ -1,5 +1,5 @@
 {
-  "name": "bothub-webapp",
+  "name": "bothub-wireframe",
   "version": "1.17.7",
   "description": "Bothub web application",
   "author": "Ilhasoft <contato@ilhasoft.com.br>",
@@ -24,6 +24,7 @@
     "deep-equal": "^1.0.1",
     "github-markdown-css": "^3.0.1",
     "global": "^4.3.2",
+    "jquery": "^3.4.1",
     "lodash": "^4.17.11",
     "query-string": "^6.1.0",
     "uuid": "^3.3.2",
@@ -85,6 +86,7 @@
     "semver": "^5.5.0",
     "shelljs": "^0.8.2",
     "sinon": "^7.3.2",
+    "style-loader": "^1.0.0",
     "stylelint": "^9.4.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-order": "^0.8.1",

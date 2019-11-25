@@ -9,6 +9,7 @@
           :errors="errors.text || errors.language"
         >
           <example-text-with-highlighted-entities-input
+            id="v-step-0"
             ref="textInput"
             v-model="text"
             :entities="entities"
@@ -30,6 +31,7 @@
         <bh-field
           :errors="errors.intent">
           <bh-autocomplete
+            id="v-step-1"
             v-model="intent"
             :data="repository.intents_list || []"
             :formatters="intentFormatters"
@@ -55,6 +57,9 @@
     <div class="columns is-variable is-1">
       <div class="column is-three-fifths">
         <bh-field :errors="errors.entities">
+          <v-tour
+            :steps="steps"
+            name="myTour" />
           <entities-input
             ref="entitiesInput"
             v-model="entities"
@@ -80,7 +85,6 @@ import { mapActions } from 'vuex';
 import BH from 'bh';
 import { formatters } from '@/utils';
 
-
 export default {
   name: 'NewExampleForm',
   components: {
@@ -104,6 +108,25 @@ export default {
       errors: {},
       submitting: false,
       entitiesList: [],
+      myOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonSkip: 'Skip tour',
+          buttonPrevious: 'Previous',
+          buttonNext: 'Proximo',
+          buttonStop: 'Finalizar',
+        },
+      },
+      steps: [
+        {
+          target: '#v-step-0', // We're using document.querySelector() under the hood
+          content: 'Discover vue tour!',
+        },
+        {
+          target: '#v-step-1', // We're using document.querySelector() under the hood
+          content: 'Discover <strong>Vue Tour</strong>!',
+        },
+      ],
     };
   },
   computed: {
@@ -171,6 +194,7 @@ export default {
   },
   mounted() {
     this.entitiesList = this.availableEntities;
+    this.$tours.myTour.start();
   },
   methods: {
     ...mapActions([

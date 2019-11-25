@@ -43,7 +43,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import RepositoryBase from './Base';
+import RepositoryBase from './base';
 import RepositoryViewBase from '@/components/repository/RepositoryViewBase';
 import NewExampleForm from '@/components/example/NewExampleForm';
 import FilterExamples from '@/components/repository/repository-evaluate/example/FilterEvaluateExample';

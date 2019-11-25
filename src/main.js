@@ -4,12 +4,14 @@ import VueMoment from 'vue-moment';
 
 import BH from 'bh';
 
+import VueTour from 'vue-tour';
 import App from './App';
 import router from './router';
 import store from './store';
 import applyFilters from './utils/filters';
 import API from './utils/plugins/API';
 
+Vue.use(VueTour);
 Vue.use(Buefy);
 Vue.use(VueMoment);
 Vue.use(BH);
