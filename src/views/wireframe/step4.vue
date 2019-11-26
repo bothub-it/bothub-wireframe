@@ -80,6 +80,7 @@
           :steps="steps"
           name="menuTour" />
         <v-tour
+          :options="trainViewOptions"
           :callbacks="myCallbacks2"
           :steps="steps3"
           name="integrationButton" />
@@ -155,7 +156,7 @@ export default {
       steps3: [
         {
           target: '#integration', // We're using document.querySelector() under the hood
-          content: 'Now click here',
+          content: "Now, let's integrate your bot with RapidPro ",
         },
       ],
       myCallbacks: {

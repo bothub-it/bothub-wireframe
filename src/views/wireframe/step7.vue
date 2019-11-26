@@ -102,13 +102,13 @@ export default {
       myOptions: {
         useKeyboardNavigation: true,
         labels: {
-          buttonStop: 'Finalizar',
+          buttonStop: 'Ok',
         },
       },
       steps: [
         {
           target: '#uuid', // We're using document.querySelector() under the hood
-          content: "First let's go to the training screen!",
+          content: 'Enter your test phrase and click here',
         },
       ],
     };
