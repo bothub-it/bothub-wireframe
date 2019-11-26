@@ -16,7 +16,8 @@
               </li>
               <li>
                 <a
-                  id="summary"
+                  id="trainView"
+                  :options="trainViewOptions"
                   :class="{ 'is-active': currentPage == 2}"
                   @click="currentPage = 2">
                   <!-- <b-icon
@@ -74,6 +75,7 @@
           </aside>
         </div>
         <v-tour
+          :options="trainViewOptions"
           :callbacks="myCallbacks"
           :steps="steps"
           name="menuTour" />
@@ -138,15 +140,15 @@ export default {
     return {
       isComponentModalActive: true,
       currentPage: 1,
-      myOptions: {
+      trainViewOptions: {
         useKeyboardNavigation: true,
         labels: {
-          buttonStop: 'Finalizar',
+          buttonStop: 'OK',
         },
       },
       steps: [
         {
-          target: '#summary', // We're using document.querySelector() under the hood
+          target: '#trainView', // We're using document.querySelector() under the hood
           content: "First let's go to the training screen!",
         },
       ],

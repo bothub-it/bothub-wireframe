@@ -14,6 +14,7 @@
                   repository.nlp_server }}parse/</bh-highlighted-pre>
           </div>
           <v-tour
+            :options="myOptions"
             :steps="steps"
             name="copyAuthorization" />
           <div class="repository-analyze-text__item">

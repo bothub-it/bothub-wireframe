@@ -72,6 +72,7 @@
       </div>
     </div>
     <v-tour
+      :options="buttonOptions"
       :steps="steps"
       name="myTour" />
   </div>
@@ -116,6 +117,15 @@ export default {
           buttonPrevious: 'Previous',
           buttonNext: 'Proximo',
           buttonStop: 'Finalizar',
+        },
+      },
+      buttonOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonSkip: 'Skip tour',
+          buttonPrevious: 'Previous',
+          buttonNext: 'Next',
+          buttonStop: 'Ok',
         },
       },
       steps: [

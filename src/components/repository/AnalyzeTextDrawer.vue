@@ -134,8 +134,8 @@ export default {
         labels: {
           buttonSkip: 'Skip tour',
           buttonPrevious: 'Previous',
-          buttonNext: 'Proximo',
-          buttonStop: 'Finalizar',
+          buttonNext: 'Next',
+          buttonStop: 'Ok',
         },
       },
       steps: [

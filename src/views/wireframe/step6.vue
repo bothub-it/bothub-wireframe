@@ -43,6 +43,7 @@
         @exampleDeleted="onExampleDeleted" />
     </div>
     <v-tour
+      :options="analyzeOptions"
       :steps="steps2"
       name="analyze" />
     <analyze-text-drawer
@@ -117,10 +118,16 @@ export default {
           content: 'Now run your train!',
         },
       ],
+      analyzeOptions: {
+        useKeyboardNavigation: true,
+        labels: {
+          buttonStop: 'Ok',
+        },
+      },
       steps2: [
         {
           target: '#analyze-1', // We're using document.querySelector() under the hood
-          content: 'Now Test your dataset',
+          content: "Now, let's do a quick test?",
         },
       ],
     };
