@@ -12,7 +12,7 @@
                   <!-- <b-icon
                     icon=""
                 />  -->
-                  Summary</a>
+                  Resumo</a>
               </li>
               <li>
                 <a
@@ -23,14 +23,14 @@
                   <!-- <b-icon
                     icon="home"
                 /> -->
-                  Train</a>
+                  Treinar</a>
               </li>
               <li>
                 <a>
                   <!-- <b-icon
                     icon="home"
                   />  -->
-                  Translate
+                  Traduzir
                 </a>
               </li>
               <li>
@@ -38,14 +38,14 @@
                   <!-- <b-icon
                     icon="home"
                 />  -->
-                  Test</a>
+                  Testar</a>
               </li>
               <li>
                 <a>
                   <!-- <b-icon
                     icon="home"
                 />  -->
-                  Inbox</a>
+                  Validar</a>
               </li>
               <li>
                 <a
@@ -55,21 +55,21 @@
                   <!-- <b-icon
                     icon="home"
                 /> -->
-                  Integrations</a>
+                  Integrações</a>
               </li>
               <li>
                 <a>
                   <!-- <b-icon
                     icon="home"
                 />  -->
-                  Users</a>
+                  Usuários</a>
               </li>
               <li>
                 <a>
                   <!-- <b-icon
                     icon="home"
                 />  -->
-                  Settings</a>
+                  Configurações</a>
               </li>
             </ul>
           </aside>
@@ -100,15 +100,15 @@
             <div class="card-content">
               <img
                 src="~@/assets/imgs/mascot.svg">
-              <h1>Let's start training your bot! </h1>
-              <p>Hi! I will be your guide to help you perform.
-              The first training and integration of your repository</p>
-              <p>can we start?</p>
+              <h1>Vamos começar treinando seu bot! </h1>
+              <p>Oi! Eu serei seu guia pra te ajudar a treinar.
+              O primeiro treinamento e integração do seu repositório</p>
+              <p>podemos começar?</p>
             </div>
             <footer class="modal-card-foot">
               <button
                 class="button is-primary"
-                @click="handleModal()">Lets go</button>
+                @click="handleModal()">Vamos lá</button>
             </footer>
           </div>
         </b-modal>
@@ -149,13 +149,13 @@ export default {
       steps: [
         {
           target: '#trainView', // We're using document.querySelector() under the hood
-          content: "First let's go to the training screen!",
+          content: "Primeiro vamos para a tela de treinamento!",
         },
       ],
       steps3: [
         {
           target: '#integration', // We're using document.querySelector() under the hood
-          content: 'Now click here',
+          content: 'Agora clique aqui',
         },
       ],
       myCallbacks: {

@@ -15,25 +15,25 @@
             <b-field label="Email">
               <b-input v-model="user.email"/>
             </b-field>
-            <b-field label="Name">
+            <b-field label="Nome">
               <b-input v-model="user.name"/>
             </b-field>
-            <b-field label="Username">
+            <b-field label="Nome de usuário">
               <b-input v-model="user.username"/>
             </b-field>
-            <b-field label="Password">
+            <b-field label="Senha">
               <b-input
                 v-model="user.password"
                 type="password"/>
             </b-field>
             <b-field
-              label="Language">
+              label="Idioma">
               <b-select
                 v-model="user.language"
-                placeholder="Select your language"
+                placeholder="Selecione seu idioma"
                 expanded>
                 <option value="English">English</option>
-                <option value="Portuguese">Portuguese</option>
+                <option value="Portuguese">Português</option>
                 <option value="Japanese">Japanese</option>
               </b-select>
             </b-field>

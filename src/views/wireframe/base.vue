@@ -5,7 +5,7 @@ export default {
     return {
       repository: {
         uuid: 'e1e8a0fa-625c-4ba3-8b91-4c9f308db791',
-        name: 'Binary Answers',
+        name: 'Respostas Binárias',
         slug: 'binary',
         description: 'Bot feito para identificar respostas binárias do usuário. \n\nEsse bot está preparado para as seguintes intenções: \n1 - affirmative: respostas com teor afirmativo\n2 - negative: respostas com teor negativo \n3 - doubt: respostas que demonstram dúvida\n4 - bias: tratamento de erros de falso positivos',
         is_private: false,
@@ -40,23 +40,23 @@ export default {
             examples__count: 43,
           },
           {
-            value: 'doubt',
+            value: 'duvida',
             examples__count: 46,
           },
           {
-            value: 'negative',
+            value: 'negativo',
             examples__count: 117,
           },
           {
-            value: 'affirmative',
+            value: 'afirmativo',
             examples__count: 158,
           },
         ],
         intents_list: [
           'bias',
-          'doubt',
-          'negative',
-          'affirmative',
+          'duvida',
+          'negativo',
+          'afirmativo',
         ],
         labels: [],
         other_label: {

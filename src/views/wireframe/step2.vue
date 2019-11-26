@@ -6,14 +6,14 @@
           <form
             class="column is-desktop is-vcentered align-center"
             @onSubmit="userHandle()">
-            <h1 class="title has-text-centered">Welcome</h1>
+            <h1 class="title has-text-centered">Bem-vindo</h1>
             <h2 class="subtitle has-text-centered">
-              Bothub is an open platform for predicting, training and sharing NLP
-              datasets in multiple languages.
+              Bothub é uma plataforma aberta para predição, treinamento e 
+              compartilhamento de conjuntos de dados em vários idiomas.
             </h2>
             <h2 class="subtitle has-text-centered">
-              Let's start by putting a name in your repository, choosing its language
-              and deciding if it will be open to the public or private.
+              Vamos começar dando nome ao seu repositório, escolhendo seu idioma
+              e decidingo se será público ou privado.
             </h2>
             <b-field label="Bot name">
               <b-input v-model="repositoryInfo.name"/>
@@ -25,7 +25,7 @@
                 placeholder="Select your language"
                 expanded>
                 <option value="English">English</option>
-                <option value="Portuguese">Portuguese</option>
+                <option value="Portuguese">Português</option>
                 <option value="Japanese">Japanese</option>
               </b-select>
             </b-field>
@@ -34,14 +34,14 @@
                 v-model="repositoryInfo.is_private"
                 :value="true"
                 type="is-success">
-                Private
+                Privado
               </b-switch>
             </div>
             <div class="has-text-centered">
               <b-button
                 type="is-primary"
                 @click="repoHandle()"
-              >Next</b-button>
+              >Próximo</b-button>
             </div>
           </form>
           <div class="column divisor"/>

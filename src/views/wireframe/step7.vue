@@ -5,7 +5,7 @@
       <div class="bh-grid">
         <div class="bh-grid__item bh-grid__item--1-2">
           <div class="repository-analyze-text__item">
-            <p>Make a HTTP request to NLP service, follow the example bellow.</p>
+            <p>Faça uma requisição HTTP ao serviço NLP, siga o exemplo abaixo.</p>
           </div>
           <div class="repository-analyze-text__item">
             <p><strong>URL:</strong></p>
@@ -25,7 +25,7 @@
                   repository.authorization.uuid }}</bh-highlighted-pre>
           </div>
           <div class="repository-analyze-text__item">
-            <p><strong>POST with form-data:</strong></p>
+            <p><strong>POST com form-data:</strong></p>
               <bh-highlighted-pre code-class="plaintext">language: [language code]
 text: [text to analyze]"</bh-highlighted-pre>
           </div>
@@ -68,8 +68,8 @@ text: [text to analyze]"</bh-highlighted-pre>
         </div>
         <div class="bh-grid__item bh-grid__item--1-2">
           <div class="repository-analyze-text__item">
-            <div><strong>Code Generator:</strong></div>
-            <div>Generate code to your respective programming language.</div>
+            <div><strong>Gerador de código:</strong></div>
+            <div>Gere código na sua respectiva linguagem de programação</div>
           </div>
           <request-generator
             :default-language-field="repository.language"
@@ -108,7 +108,7 @@ export default {
       steps: [
         {
           target: '#uuid', // We're using document.querySelector() under the hood
-          content: "First let's go to the training screen!",
+          content: "Primeiro vamos para a tela de treinamento!",
         },
       ],
     };

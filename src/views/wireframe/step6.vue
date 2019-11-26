@@ -7,8 +7,8 @@
         <div class="bh-grid__item">
           <div>
             <div>
-              <h2>Train a new sentence</h2>
-              <span>Add examples to improve your bot intelligence.</span>
+              <h2>Treine uma nova frase</h2>
+              <span>Adicione exemplos para melhorar a inteligência do seu bot.</span>
               <new-example-form
                 :repository="repository"
                 @created="onExampleCreated($event)" />
@@ -20,7 +20,7 @@
     <hr>
     <div class="bh-grid__item">
       <div class="trainings-repository__list-wrapper">
-        <h2>Sentences list</h2>
+        <h2>Lista de frases</h2>
         <div id="training">
           <bh-button
             v-if="repository.examples__count > 0 && repository.authorization.can_write "
@@ -28,7 +28,7 @@
             color="secondary-light"
             size="normal"
             @click="openTrainingModal">
-            Run training
+            Treinar
           </bh-button>
         </div>
 
@@ -106,16 +106,16 @@ export default {
       myOptions: {
         useKeyboardNavigation: true,
         labels: {
-          buttonSkip: 'Skip tour',
-          buttonPrevious: 'Previous',
-          buttonNext: 'Proximo',
+          buttonSkip: 'Pular tour',
+          buttonPrevious: 'Anterior',
+          buttonNext: 'Próximo',
           buttonStop: 'Finalizar',
         },
       },
       steps: [
         {
           target: '#training', // We're using document.querySelector() under the hood
-          content: 'Now run your train!',
+          content: 'Agora execute o treinamento!',
         },
       ],
       analyzeOptions: {
@@ -127,7 +127,7 @@ export default {
       steps2: [
         {
           target: '#analyze-1', // We're using document.querySelector() under the hood
-          content: "Now, let's do a quick test?",
+          content: "Agora, vamos fazer um teste rápido?",
         },
       ],
     };

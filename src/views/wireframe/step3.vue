@@ -6,10 +6,10 @@
           <form
             class="column is-desktop is-vcentered align-center"
             @onSubmit="userHandle()">
-            <h1 class="title has-text-centered">Categories</h1>
+            <h1 class="title has-text-centered">Categorias</h1>
             <h2 class="subtitle has-text-centered">
-              Choose the categories where your repository fits.
-              Don't worry, you can change them later.
+              Escolha as categorias que seu repositório se encaixa.
+              Não se preocupe, você poderá mudá-las depois.
             </h2>
             <div class="columns">
               <div
@@ -49,7 +49,7 @@
               <b-button
                 type="is-primary"
                 @click="categoryHandle()"
-              >Next</b-button>
+              >Próximo</b-button>
             </div>
           </form>
           <div class="column divisor"/>
@@ -76,24 +76,24 @@ export default {
     return {
       categories1: [
         {
-          name: 'Health', icon: 'health', selected: false, id: 1,
+          name: 'Saúde', icon: 'health', selected: false, id: 1,
         },
         {
-          name: 'Food', icon: 'food', selected: false, id: 2,
+          name: 'Comida', icon: 'food', selected: false, id: 2,
         },
         {
-          name: 'Sport', icon: 'sport', selected: false, id: 3,
+          name: 'Esporte', icon: 'sport', selected: false, id: 3,
         },
       ],
       categories2: [
         {
-          name: 'Tecnology', icon: 'tecno', selected: false, id: 4,
+          name: 'Tecnologia', icon: 'tecno', selected: false, id: 4,
         },
         {
-          name: 'Entertainment', icon: 'entertainment', selected: false, id: 5,
+          name: 'Entretenimento', icon: 'entertainment', selected: false, id: 5,
         },
         {
-          name: 'Business', icon: 'business', selected: false, id: 6,
+          name: 'Negócios', icon: 'business', selected: false, id: 6,
         },
       ],
       selectedCategories: [],
