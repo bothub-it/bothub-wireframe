@@ -22,7 +22,7 @@
         </router-link>
         <div class="avatar-info">
           <div class="avatar-info__text">
-            <p>Welcome, <span>{{ getUser.username }}</span></p>
+            <p>Bem-vindo(a), <span>{{ getUser.username }}</span></p>
           </div>
           <user-avatar
             :profile="getUser"

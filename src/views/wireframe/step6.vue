@@ -127,7 +127,7 @@ export default {
       steps2: [
         {
           target: '#analyze-1', // We're using document.querySelector() under the hood
-          content: "Agora, vamos fazer um teste rápido?",
+          content: 'Agora, vamos fazer um teste rápido?',
         },
       ],
     };

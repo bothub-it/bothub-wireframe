@@ -108,7 +108,7 @@ export default {
       steps: [
         {
           target: '#uuid', // We're using document.querySelector() under the hood
-          content: "Primeiro vamos para a tela de treinamento!",
+          content: 'Copie sua autorização e estará pronto(a) para tornar os seus produtos inteligentes (:',
         },
       ],
     };

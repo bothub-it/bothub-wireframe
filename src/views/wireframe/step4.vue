@@ -80,6 +80,7 @@
           :steps="steps"
           name="menuTour" />
         <v-tour
+          :options="trainViewOptions"
           :callbacks="myCallbacks2"
           :steps="steps3"
           name="integrationButton" />
@@ -149,7 +150,7 @@ export default {
       steps: [
         {
           target: '#trainView', // We're using document.querySelector() under the hood
-          content: "Primeiro vamos para a tela de treinamento!",
+          content: 'Primeiro vamos para a tela de treinamento!',
         },
       ],
       steps3: [

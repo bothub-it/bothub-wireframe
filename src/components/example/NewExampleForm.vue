@@ -113,8 +113,8 @@ export default {
       myOptions: {
         useKeyboardNavigation: true,
         labels: {
-          buttonSkip: 'Skip tour',
-          buttonPrevious: 'Previous',
+          buttonSkip: 'Pular tutorial',
+          buttonPrevious: 'Voltar',
           buttonNext: 'Proximo',
           buttonStop: 'Finalizar',
         },
@@ -122,24 +122,24 @@ export default {
       buttonOptions: {
         useKeyboardNavigation: true,
         labels: {
-          buttonSkip: 'Skip tour',
-          buttonPrevious: 'Previous',
-          buttonNext: 'Next',
+          buttonSkip: 'Pular tutorial',
+          buttonPrevious: 'Voltar',
+          buttonNext: 'Próximo',
           buttonStop: 'Ok',
         },
       },
       steps: [
         {
           target: '#input-1', // We're using document.querySelector() under the hood
-          content: 'Enter a sentence here that you would like your bot to understand. Ex: I really want this',
+          content: 'Digite uma frase que você queira que seu bot reconheça. Ex: Eu gosto de gatos',
         },
         {
           target: '#input-2', // We're using document.querySelector() under the hood
-          content: 'And here, identify that intent of the sentence you typed matches. Ex: affirmative',
+          content: 'Agora, indentifique a intenção da sua frase. Ex: Gostar',
         },
         {
           target: '#input-3', // We're using document.querySelector() under the hood
-          content: 'And finally, submit your sentence',
+          content: 'E por último, envie seu novo exemplo',
         },
       ],
     };

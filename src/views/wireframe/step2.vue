@@ -8,21 +8,21 @@
             @onSubmit="userHandle()">
             <h1 class="title has-text-centered">Bem-vindo</h1>
             <h2 class="subtitle has-text-centered">
-              Bothub é uma plataforma aberta para predição, treinamento e 
+              Bothub é uma plataforma aberta para predição, treinamento e
               compartilhamento de conjuntos de dados em vários idiomas.
             </h2>
             <h2 class="subtitle has-text-centered">
               Vamos começar dando nome ao seu repositório, escolhendo seu idioma
               e decidingo se será público ou privado.
             </h2>
-            <b-field label="Bot name">
+            <b-field label="Nome do bot">
               <b-input v-model="repositoryInfo.name"/>
             </b-field>
             <b-field
-              label="Language">
+              label="Idioma">
               <b-select
                 v-model="repositoryInfo.language"
-                placeholder="Select your language"
+                placeholder="Selecione seu idioma"
                 expanded>
                 <option value="English">English</option>
                 <option value="Portuguese">Português</option>

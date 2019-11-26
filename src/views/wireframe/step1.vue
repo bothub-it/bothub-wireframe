@@ -11,7 +11,7 @@
           <form
             class="column is-desktop is-vcentered align-center"
           >
-            <h1 class="title has-text-centered">Create account</h1>
+            <h1 class="title has-text-centered">Criar conta</h1>
             <b-field label="Email">
               <b-input v-model="user.email"/>
             </b-field>
@@ -41,7 +41,7 @@
               <b-button
                 type="is-primary"
                 @click="userHandle()"
-              >Create account</b-button>
+              >Criar conta</b-button>
             </div>
           </form>
         </div>

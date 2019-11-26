@@ -132,20 +132,20 @@ export default {
       myOptions: {
         useKeyboardNavigation: true,
         labels: {
-          buttonSkip: 'Skip tour',
-          buttonPrevious: 'Previous',
-          buttonNext: 'Next',
+          buttonSkip: 'Pular tutorial',
+          buttonPrevious: 'Voltar',
+          buttonNext: 'Próximo',
           buttonStop: 'Ok',
         },
       },
       steps: [
         {
           target: '#analyze-text-1', // We're using document.querySelector() under the hood
-          content: 'Select your language and put your text',
+          content: 'Selecione um idioma e digite o texto que deseja ser testado',
         },
         {
           target: '#analyze-text-2', // We're using document.querySelector() under the hood
-          content: 'Now run your train!',
+          content: 'Agora vamos testar!',
         },
       ],
       myCallbacks: {
