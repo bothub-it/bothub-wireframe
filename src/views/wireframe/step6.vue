@@ -127,7 +127,7 @@ export default {
       steps2: [
         {
           target: '#analyze-1', // We're using document.querySelector() under the hood
-          content: "Now, let's do a quick test?",
+          content: "Your bot is now trained! let's do a quick test?",
         },
       ],
     };
@@ -176,7 +176,7 @@ export default {
     },
     onExampleCreated(event) {
       this.examples.push(event);
-      if (this.examples.length >= 4) {
+      if (this.examples.length >= 1) {
         this.$tours.training.start();
       }
     },
