@@ -108,7 +108,7 @@ export default {
       steps: [
         {
           target: '#uuid', // We're using document.querySelector() under the hood
-          content: 'Enter your test phrase and click here',
+          content: "Use your authorization code and you'll be ready to make your products smarter (:",
         },
       ],
     };
