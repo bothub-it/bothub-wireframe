@@ -84,7 +84,7 @@
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
     "semver": "^5.5.0",
-    "shelljs": "^0.8.2",
+    "shelljs": "^0.8.5",
     "sinon": "^7.3.2",
     "style-loader": "^1.0.0",
     "stylelint": "^9.4.0",
